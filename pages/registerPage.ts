@@ -18,7 +18,7 @@ export class RegisterPageObject {
     public courseSelect: ElementFinder;
     public submit: ElementFinder;
     public messageSuccess = 'Registration Success';
-
+    timeout=2000;
     
     constructor() {
         this.nameInput = $("input[id='name']");
@@ -36,23 +36,29 @@ export class RegisterPageObject {
         this.submit = $("input[id='btn-save']");
     }
     
-    async selectEducation() {
-        await element(by.css('#qa-radio .Bachelor')).click();
+    async selectEducation(education:string) {
+        var elemEducation = await element(by.css("#qa-radio ."+education));
+        this.waitElement(elemEducation.click());
     }
     
-    async selectCourse() {
+    async selectCourse(course:string) {
         await element(by.tagName("select#qa-select")).click();
-        await element(by.xpath("//option[text()='C#']")).click();
-        //element(by.css("option[value='"+value+"']")).click()
+        await element(by.xpath("//option[text()='"+course+"']")).click();
     }
     async clickSubmit() {
         await element(by.buttonText('Save')).click();
     }
     async verifyRegisterSuccess() {
-        //var expected='Registration Success';
         return element(by.css('.messageBox #message')).getText();
-       // await expect(messageSucess.getText()).to.eventually.equal(expected);
     }
+
+    async clickClose() {
+        await element(by.buttonText('close')).click();
+    }
+        waitElement(element:ElementFinder){
+        var EC=protractor.ExpectedConditions;
+        return browser.wait(EC.presenceOf(element),this.timeout, element+":NOT FOUND!!!");
+     }
 }
     
 
