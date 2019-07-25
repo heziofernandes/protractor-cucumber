@@ -1,4 +1,3 @@
-import * as path from "path";
 import { browser, Config } from "protractor";
 import { Reporter } from "../support/reporter";
 const jsonReports = process.cwd() + "/reports/json";
@@ -11,9 +10,27 @@ export const config: Config = {
 
     baseUrl: "http://localhost:3000/",
 
-    capabilities: {
-        browserName: "chrome",
-    },
+   // capabilities: {
+     //   browserName: "chrome",
+   // },
+
+    multiCapabilities: [{
+        'browserName': 'chrome',
+            shardTestFiles: true,
+            maxInstances: 2,
+            specs: ['./features/register.feature']
+         },{
+        'browserName': 'firefox',
+             'count': 2,
+              specs: ['./features/register_required.feature']
+         //}
+         //,{
+           // 'browserName': 'internet explorer',
+            // version: 'ANY',
+            //'ignoreProtectedModeSettings': true,
+            //specs: ['./features/register_required.feature']
+        }],
+    
 
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
@@ -33,7 +50,7 @@ export const config: Config = {
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../typeScript/stepdefinitions/*.js", "../../typeScript/support/*.js"],
         strict: true,
-        tags: "@CucumberScenario or @ProtractorScenario or @TypeScriptScenario or @OutlineScenario",
+        tags: "@Validation or @OutlineScenario",
     },
 
     onComplete: () => {

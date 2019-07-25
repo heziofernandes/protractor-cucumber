@@ -1,17 +1,5 @@
 version: "3"
 services:
-  api:
-    image: node
-    ports:
-      - 3000:3000
-    volumes: 
-      - .:/src
-    depends_on:
-      - selenium-hub
-    working_dir: /src
-    command: tail -f /dev/null
-    command: bash -c "npm install && npm start"
-  
   selenium-hub:
     image: selenium/hub:3.141.59-selenium
     container_name: selenium-hub

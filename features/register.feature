@@ -23,6 +23,6 @@ Feature: Register a new user in the system
     |Education       |Course      | 
     |Technician      |Java        |
     |Bachelor        |Java Script |
-    |Master degree   |Python      |
-    |Doctorate degree|PHP         |
+    |Master          |Python      |
+    |Doctorate       |PHP         |
     |Highlander      |C#          |
