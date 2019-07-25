@@ -15,20 +15,13 @@ export const config: Config = {
    // },
 
     multiCapabilities: [{
-        'browserName': 'chrome',
-            shardTestFiles: true,
-            maxInstances: 2,
-            specs: ['./features/register.feature']
-         },{
-        'browserName': 'firefox',
-             'count': 2,
-              specs: ['./features/register_required.feature']
-         //}
-         //,{
-           // 'browserName': 'internet explorer',
-            // version: 'ANY',
-            //'ignoreProtectedModeSettings': true,
-            //specs: ['./features/register_required.feature']
+       'browserName': 'chrome',
+        shardTestFiles: true,
+        maxInstances: 2,
+        },{
+       'browserName': 'firefox',
+        shardTestFiles: false,
+       'count': 2,
         }],
     
 
