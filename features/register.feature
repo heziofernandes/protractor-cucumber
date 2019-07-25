@@ -6,7 +6,7 @@ Feature: Register a new user in the system
   Background: Access the registration form
     Given Im user logged in
 
-  @OutlineScenario
+  @RegisterE2E
   Scenario Outline:: Performs registration form
     When I insert a name
     And I insert a login

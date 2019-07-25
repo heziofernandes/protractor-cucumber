@@ -28,7 +28,8 @@
     "generate-contributors": "all-contributors generate",
     "test": "protractor typeScript/config/config.js",
     "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start"
+    "webdriver-start": "webdriver-manager start",
+    "test-mult": "protractor typeScript/config/multiConfig.js"
   },
   "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "devDependencies": {
@@ -42,6 +43,7 @@
     "chai-as-promised": "^7.1.1",
     "cucumber": "^5.0.3",
     "cucumber-html-reporter": "^4.0.5",
+    "cucumberjs-allure-reporter": "^1.0.3",
     "jasmine": "^3.4.0",
     "jasmine-allure-reporter": "^1.0.2",
     "jasmine-core": "^3.4.0",

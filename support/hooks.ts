@@ -7,14 +7,16 @@ BeforeAll({timeout: 100 * 1000}, async () => {
     await browser.get(config.baseUrl);
 });
 
-After(async function(scenario) {
-    if (scenario.result.status === Status.FAILED) {
-        // screenShot is a base-64 encoded PNG
-         const screenShot = await browser.takeScreenshot();
-         this.attach(screenShot, "image/png");
-    }
-});
-
 AfterAll({timeout: 100 * 1000}, async () => {
     await browser.quit();
 });
+
+After(function(scenario) {
+    if (scenario.result.status === Status.FAILED) {
+      const attach = this.attach; // cucumber's world object has attach function which should be used
+      return browser.takeScreenshot().then(function(png) {
+        const decodedImage = new Buffer(png, "base64");
+        return attach(decodedImage, "image/png");
+      });
+    }
+  });

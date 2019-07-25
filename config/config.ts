@@ -10,20 +10,9 @@ export const config: Config = {
 
     baseUrl: "http://localhost:3000/",
 
-   // capabilities: {
-     //   browserName: "chrome",
-   // },
-
-    multiCapabilities: [{
-       'browserName': 'chrome',
-        shardTestFiles: true,
-        maxInstances: 2,
-        },{
-       'browserName': 'firefox',
-        shardTestFiles: false,
-       'count': 2,
-        }],
-    
+   capabilities: { 
+       browserName: "chrome",
+    },
 
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
@@ -42,10 +31,10 @@ export const config: Config = {
         compiler: "ts:ts-node/register",
         format: "json:./reports/json/cucumber_report.json",
         require: ["../../typeScript/stepdefinitions/*.js", "../../typeScript/support/*.js"],
+        tags: "@Validation or @RegisterE2E",
         strict: true,
-        tags: "@Validation or @OutlineScenario",
     },
-
+    
     onComplete: () => {
         Reporter.createHTMLReport();
     },
