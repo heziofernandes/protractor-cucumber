@@ -1,5 +1,4 @@
 const { BeforeAll, After, AfterAll, Status } = require("cucumber");
-import * as fs from "fs";
 import { browser } from "protractor";
 import { config } from "../config/config";
 
@@ -15,7 +14,7 @@ After(function(scenario) {
     if (scenario.result.status === Status.FAILED) {
       const attach = this.attach; // cucumber's world object has attach function which should be used
       return browser.takeScreenshot().then(function(png) {
-        const decodedImage = new Buffer(png, "base64");
+        const decodedImage = Buffer.from(png, "base64");
         return attach(decodedImage, "image/png");
       });
     }

@@ -4,11 +4,11 @@ const jsonReports = process.cwd() + "/reports/json";
 
 export const config: Config = {
 
-    seleniumAddress: "http://172.24.0.1:4444/wd/hub",
+    seleniumAddress: "http://localhost:4444/wd/hub",
 
     SELENIUM_PROMISE_MANAGER: false,
 
-    baseUrl: "http://172.24.0.1:3000/",
+    baseUrl: "http://localhost:3000/",
 
 
    capabilities: { 

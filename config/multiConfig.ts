@@ -3,11 +3,12 @@ import { Reporter } from "../support/reporter";
 const jsonReports = process.cwd() + "/reports/json";
 
 export const config: Config = {
-    seleniumAddress: "http://localhost:4444/wd/hub",
 
-    SELENIUM_PROMISE_MANAGER: false,
+  seleniumAddress: "http://172.24.0.1:4444/wd/hub",
 
-    baseUrl: "http://localhost:3000/",
+  SELENIUM_PROMISE_MANAGER: false,
+
+  baseUrl: "http://172.24.0.1:3000/",
 
     multiCapabilities: [
       {
@@ -17,6 +18,8 @@ export const config: Config = {
       },
       {
         browserName: "firefox",
+        'moz:firefoxOptions': {
+            'args': ['--safe-mode']},
         shardTestFiles: false,
         'count': 2
       }
@@ -25,9 +28,9 @@ export const config: Config = {
     framework: "custom",
     frameworkPath: require.resolve("protractor-cucumber-framework"),
   
-    suites: {
-      cucumberFeature: ["../../features/*.feature"]
-    },
+  //  suites: {
+    //  cucumberFeature: ["../../features/*.feature"]
+    //},
 
     specs: [
         "../../features/*.feature",
@@ -38,7 +41,6 @@ export const config: Config = {
       browser.manage().window().maximize();
       Reporter.createDirectory(jsonReports);
     },
-  
 
     onComplete: () => {
         Reporter.createHTMLReport();
@@ -47,7 +49,7 @@ export const config: Config = {
     cucumberOpts: {
       strict: true,
       format: "json:./reports/json/cucumber_report.json",
-      require: ["../stepDefinitions/*.js", "../support/*.js"],
-      tags: "@Validation or @OutlineScenario"
+      require: ["../../typeScript/stepdefinitions/*.js", "../../typeScript/support/*.js"],
+      tags: "@Validation or @RegisterE2E"
     }
   };

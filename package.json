@@ -23,15 +23,12 @@
     "build": "tsc",
     "clean": "rimraf typeScript/",
     "clean-build": "npm run clean && npm run build",
-    "init-contributors": "all-contributors init",
-    "add-contributors": "all-contributors add",
-    "generate-contributors": "all-contributors generate",
     "test": "protractor typeScript/config/config.js",
+    "local": "protractor typeScript/config/configLocal.js",
+    "mult": "protractor typeScript/config/multiConfig.js",
     "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start",
-    "test-mult": "protractor typeScript/config/multiConfig.js"
+    "webdriver-start": "webdriver-manager start"
   },
-  "author": "Ram Pasala <ram.pasala7@gmail.com>",
   "devDependencies": {
     "@types/cucumber": "^4.0.4",
     "@types/jasmine": "^3.3.15",
@@ -44,11 +41,6 @@
     "cucumber": "^5.0.3",
     "cucumber-html-reporter": "^4.0.5",
     "cucumberjs-allure-reporter": "^1.0.3",
-    "jasmine": "^3.4.0",
-    "jasmine-allure-reporter": "^1.0.2",
-    "jasmine-core": "^3.4.0",
-    "jasmine-spec-reporter": "^4.2.1",
-    "jasmine-ts": "^0.3.0",
     "mkdirp": "^0.5.1",
     "protractor": "^5.4.0",
     "protractor-cucumber-framework": "^6.1.1",
@@ -56,9 +48,5 @@
     "ts-node": "^8.0.2",
     "typescript": "^3.0.1"
   },
-  "repository": "https://github.com/igniteram/protractor-cucumber-typescript",
-  "dependencies": {
-    "iedriver": "^3.14.1",
-    "karma-cucumberjs-allure-reporter": "^1.4.5"
-  }
+  "repository": "https://github.com/heziofernandes/protractor-cucumber"
 }

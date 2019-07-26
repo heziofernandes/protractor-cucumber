@@ -6,7 +6,7 @@ Feature: Register a new user in the system
   Background: Access the registration form
     Given Im user logged in
 
-  @OutlineScenario
+  @Validation
   Scenario Outline: wrong email address  
     When I insert a name
     And I insert a login
@@ -37,7 +37,7 @@ Feature: Register a new user in the system
     |Education       |Course      | 
     |Technician      |Java        |
 
-   @OutlineScenario
+  @Validation
   Scenario Outline: registration without email
     When I insert a name
     And I insert a login

@@ -1,0 +1,140 @@
+<html>
+<head>
+	<title>Test Form</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+	<style>
+		form{
+			margin-top:100px;
+		}
+		body{
+			background-size: 100%;
+		}
+		.modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: rgba(0,0,0,.75);
+		}
+		.modal.show {
+			display: block;
+		}
+		.messageBox {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -100px;
+			margin-left: -200px;
+			width: 400px;
+			height: 200px;
+			background: #FFF;
+			text-align: center;
+			border-radius:2px;
+			box-shadow: 0 0 10px rgba(0,0,0,.2);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<form class="col-md-10" action="#" method="post" id="myform">
+			<h2>Automation Test Form</h2>
+
+			<div class="form-group">
+				<label for="nome">Name</label>
+				<input type="nome" class="form-control" id="name" placeholder="Enter Name" required>
+			</div>
+
+			<div class="form-group">
+				<label for="login">Login</label>
+				<input type="login" class="form-control" id="login" placeholder="Enter Login">
+			</div>
+
+			<div class="form-group">
+				<label for="passaword">Password</label>
+				<input type="password" class="form-control" id="password" placeholder="Enter Password">
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="endereco">Address</label>
+				<input type="endereco" class="form-control" id="address" placeholder="Enter Address">
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" id="address-details" placeholder="Address Details" rows="3"></textarea>
+			</div>
+
+
+			<div class="form-group clearfix">
+				<label class="col-md-12 pull-left">Education or Professional Training</label>
+				<div class="education" id="qa-radio">
+					<label>
+						<input class="Technician" type="radio" value="Technician">
+						Technician
+					</label>
+					<label>
+						<input class="Bachelor" type="radio" value="Bachelor">
+						Bachelor
+					</label>
+					<label>
+						<input class="Master degree" type="radio" value="Master">
+						Master  
+					</label>
+					<label>
+						<input class="Doctorate degree" type="radio" value="Doctorate">
+						Doctorate  
+					</label>
+					<label>
+						<input class="Highlander" type="radio" value="Highlander">
+						Highlander
+					</label>
+				</div>
+			</div>
+
+			<div class="form-group clearfix">
+				<label class="col-md-12 pull-left">Course</label>
+				<select class="form-control qa-select" id="qa-select">
+					<option>Select</option>
+					<option value="Java">Java</option>
+					<option value="Java Script">Java Script</option>
+					<option value="Python">Python</option>
+					<option value="PHP">PHP</option>
+					<option value="C#">C#</option>
+				</select>
+			</div>
+
+			<div class="modal">
+				<div class="messageBox">
+					<span id="message">Registration Success</span>
+					<button class="closemodal">close</button>
+				</div>
+			</div>
+
+			<script>
+
+			</script>
+			<button id="btn-save" class="btn btn-default">Save</button>
+		</form>
+
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#myform").submit(function(){
+					$(".modal").show();
+					return false;
+				});
+
+				$(".closemodal").click(function(){
+					$(".modal").hide();
+					return false;
+				})
+			})
+		</script>
+	</div>
+</body>
+</html>
