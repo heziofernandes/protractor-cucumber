@@ -1,17 +1,18 @@
 version: '2'
 services:
-    nodejs:
+    node:
         image: node
+        container_name: container-nodejs
         volumes:
             - .:/src
         working_dir: /src
         depends_on:
-            - progrid
+            - selenium-hub
         command: tail -f /dev/null
 
-    progrid:
+    selenium-hub:
         image: selenium/hub:2.53.1
-        container_name: progrid
+        container_name: selenium-hub
         privileged: true
         ports:
             - 4444:4444
@@ -19,37 +20,39 @@ services:
             - GRID_TIMEOUT=240000
             - GRID_BROWSER_TIMEOUT=240000
         networks:
-            - progrid_grid_internal
+            - selenium-hub_grid_internal
 
     nodechrome:
         image: selenium/node-chrome-debug:2.53.1-americium
+        container_name: selenium-chrome
         privileged: true
         depends_on:
-            - progrid
+            - selenium-hub
         ports:
             - 5900
         environment:
             - no_proxy=localhost
             - TZ=Europe/Lisbon
-            - HUB_PORT_4444_TCP_ADDR=progrid
+            - HUB_PORT_4444_TCP_ADDR=selenium-hub
             - HUB_PORT_4444_TCP_PORT=4444
         networks:
-            - progrid_grid_internal
+            - selenium-hub_grid_internal
 
     nodefirefox:
         image: selenium/node-firefox-debug:2.53.1
+        container_name: selenium-firefox
         privileged: true
         depends_on:
-            - progrid
+            - selenium-hub
         ports:
             - 5901
         environment:
             - no_proxy=localhost
             - TZ=Europe/Lisbon
-            - HUB_PORT_4444_TCP_ADDR=progrid
+            - HUB_PORT_4444_TCP_ADDR=selenium-hub
             - HUB_PORT_4444_TCP_PORT=4444
         networks:
-            - progrid_grid_internal
+            - selenium-hub_grid_internal
         
 networks:
-    progrid_grid_internal:
+    selenium-hub_grid_internal:
